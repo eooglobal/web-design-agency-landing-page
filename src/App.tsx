@@ -1,32 +1,34 @@
-import { useEffect, useCallback } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Problems from './components/Problems';
-import BeforeAfter from './components/BeforeAfter';
-import About from './components/About';
-import Process from './components/Process';
-import ROI from './components/ROI';
-import FinalCTA from './components/FinalCTA';
-import Footer from './components/Footer';
+import * as React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Problems from "./components/Problems";
+import BeforeAfter from "./components/BeforeAfter";
+import About from "./components/About";
+import Process from "./components/Process";
+import ROI from "./components/ROI";
+import FinalCTA from "./components/FinalCTA";
+import Footer from "./components/Footer";
 
 function Divider() {
   return <div className="section-divider w-full" />;
 }
 
 export default function App() {
+  const { useEffect, useCallback } = React;
+
   const observeElements = useCallback(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.05, rootMargin: "0px 0px -60px 0px" },
     );
 
-    const elements = document.querySelectorAll('.fade-up');
+    const elements = document.querySelectorAll(".fade-up");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();

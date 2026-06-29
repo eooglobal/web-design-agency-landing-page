@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react';
+import * as React from "react";
 
-const CAL_LINK = 'https://cal.com/growthweb/discovery';
+const CAL_LINK = "https://cal.com/growthweb/discovery";
 
 export default function Navbar() {
+  const { useState, useEffect } = React;
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-navy-950/95 backdrop-blur-xl border-b border-white/[0.06] py-3 md:py-4'
-          : 'bg-transparent py-5 md:py-6'
+          ? "bg-navy-950/95 backdrop-blur-xl border-b border-white/[0.06] py-3 md:py-4"
+          : "bg-transparent py-5 md:py-6"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 flex items-center justify-between">
